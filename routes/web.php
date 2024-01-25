@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegisterController;
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +34,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'welcome'])->name('
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('events', EventController::class);
+Route::resource('event-registers', EventRegisterController::class);
+Route::resource('people', PersonController::class);
