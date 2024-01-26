@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventManagerController;
+use App\Http\Controllers\EventOwnerController;
 use App\Http\Controllers\EventRegisterController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Artisan;
@@ -39,3 +41,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('events', EventController::class);
 Route::resource('event-registers', EventRegisterController::class);
 Route::resource('people', PersonController::class);
+
+Route::resource('event_managers', EventManagerController::class);
+Route::resource('event_owners', EventOwnerController::class);
