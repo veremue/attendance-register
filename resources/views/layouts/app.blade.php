@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
-
     
 </head>
 <body>
@@ -43,6 +42,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('events.index')}}"><h5 class="text-white">Events</h5></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('event-owners.index')}}"><h5 class="text-white">Managers</h5></a>
                             </li>
                         @endif
                     </ul>
@@ -100,11 +102,26 @@
         </main>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
     
     <script>
-        new DataTable('#example');
+        new DataTable('#data-table');
+
+        $("#add-entity-button").click(function(){
+            $('#add-entity-form').show();
+            $('#add-entity-button').hide();
+        });
+
+        
+        $("#cancel-entity-form").click(function(){
+            $('#add-entity-form').hide();
+            $('#add-entity-button').show();
+        });
+
     </script>
 </body>
 </html>

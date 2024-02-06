@@ -37,10 +37,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::resource('events', EventController::class);
 Route::resource('event-registers', EventRegisterController::class);
 Route::resource('people', PersonController::class);
-
-Route::resource('event_managers', EventManagerController::class);
-Route::resource('event_owners', EventOwnerController::class);
+Route::resource('event-managers', EventManagerController::class);
+Route::resource('event-owners', EventOwnerController::class);

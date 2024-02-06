@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
+use Brian2694\Toastr\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class PersonController extends Controller
 {
@@ -12,7 +15,8 @@ class PersonController extends Controller
      */
     public function index()
     {
-        return view('people.index');
+        $people = Person::orderBy('first_name')->get();
+        return view('people.index',['people'=>$people]);
     }
 
     /**
@@ -28,7 +32,16 @@ class PersonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $person = new Person();
+        $person->first_name = $request->first_name;
+        $person->last_name = $request->last_name;
+        $person->email = $request->email;
+        $person->phone_number = $request->phone_number;
+        $person->address = $request->address;
+        $person->user_id = Auth::user()->id;
+        $person->save();
+
+        return back()->with('status','Person successfully saved');
     }
 
     /**
