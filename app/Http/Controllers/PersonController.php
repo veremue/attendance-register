@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Person;
 use Brian2694\Toastr\Toastr;
+use Illuminate\Database\Query\Processors\PostgresProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +42,7 @@ class PersonController extends Controller
         $person->user_id = Auth::user()->id;
         $person->save();
 
-        return back()->with('status','Person successfully saved');
+        return back()->with('status','Person successfully saved!');
     }
 
     /**
@@ -65,7 +66,16 @@ class PersonController extends Controller
      */
     public function update(Request $request, Person $person)
     {
-        //
+        // dd($person);
+        // dd($request);
+        $person->first_name = $request->edit_first_name;
+        $person->last_name = $request->edit_last_name;
+        $person->email = $request->edit_email;
+        $person->phone_number = $request->edit_phone_number;
+        $person->address = $request->edit_address;
+        $person->update();
+
+        return back()->with('status','Person successfully updated!');
     }
 
     /**
