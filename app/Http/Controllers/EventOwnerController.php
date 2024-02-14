@@ -12,7 +12,8 @@ class EventOwnerController extends Controller
      */
     public function index()
     {
-        //
+        $event_owners = EventOwner::orderBy('event_manager_name')->get();
+        return view('event-owners.index',['event_owners'=>$event_owners]);
     }
 
     /**
@@ -28,7 +29,12 @@ class EventOwnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $event_owner = new EventOwner();
+        $event_owner->event_manager_name = $request->event_manager_name;
+        $event_owner->event_manager_email = $request->event_manager_email;
+        $event_owner->event_manager_phone = $request->event_manager_phone;
+        $event_owner->save();
+        return back()->with('status','Event owner successfully saved!');
     }
 
     /**
@@ -52,7 +58,12 @@ class EventOwnerController extends Controller
      */
     public function update(Request $request, EventOwner $eventOwner)
     {
-        //
+        $eventOwner->event_manager_name = $request->edit_event_manager_name;
+        $eventOwner->event_manager_email = $request->edit_event_manager_email;
+        $eventOwner->event_manager_phone = $request->edit_event_manager_phone;
+        $eventOwner->update();
+
+        return back()->with('status','Person successfully updated!');
     }
 
     /**

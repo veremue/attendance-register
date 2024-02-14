@@ -46,7 +46,7 @@
                                 <a class="nav-link" href="{{route('events.index')}}"><h5 class="text-white">Events</h5></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('event-owners.index')}}"><h5 class="text-white">Managers</h5></a>
+                                <a class="nav-link" href="{{route('event-owners.index')}}"><h5 class="text-white">Event Owners</h5></a>
                             </li>
                         @endif
                     </ul>

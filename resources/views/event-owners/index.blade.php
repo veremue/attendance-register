@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">People</li>
+          <li class="breadcrumb-item active" aria-current="page">Event Owners</li>
         </ol>
     </nav>
     <div class="row justify-content-center">
@@ -14,7 +14,7 @@
                 <div class="card-body"> 
                     <div class="row">
                         <div class="col-md-6 d-flex justify-content-start">
-                            <h3>People</h3>                            
+                            <h3>Event Owners</h3>                            
                         </div>
                         <div class="col-md-6 d-flex justify-content-end">
                             <button id="add-entity-button" class="btn" style="font-size: 2.5em; color: Tomato;"><i class="fa-solid fa-plus"></i></button>
@@ -24,33 +24,28 @@
                     <div class="card shadow-lg mb-2 bg-body-tertiary rounded" style="display: none" id="add-entity-form">
                         <div class="card-body">
                             <div class="row">
-                                <h5>Add person</h5>
+                                <h5>Add event owner</h5>
                             </div>
+                            
                             <div class="row">
-                                <form action="{{route('people.store')}}" method="post">
+                                <form action="{{route('event-owners.store')}}" method="post">
                                     @csrf
                                     <div class="row mb-3">
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">First Name</label>
-                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">Last Name</label>
-                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">Email address</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bolder">Name</label>
+                                            <input type="text" name="event_manager_name" id="event_manager_name" class="form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bolder">Email address</label>
+                                            <input type="email" name="event_manager_email" id="event_manager_email" class="form-control" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-12">
                                         <div class="col-md-6">
                                             <label class="form-label fw-bolder">Phone Number</label>
-                                            <input type="tel" name="phone_number" id="phone_number" class="form-control" placeholder="Phone Number">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bolder">Address</label>
-                                            <input type="text" name="address" id="address" class="form-control" placeholder="Address">
+                                            <input type="tel" name="event_manager_phone" id="event_manager_phone" class="form-control" placeholder="Phone Number" required>
                                         </div>
                                     </div>                                  
                                     <div class="row">
@@ -67,36 +62,30 @@
                     <div class="card shadow-lg mb-2 bg-body-tertiary rounded" style="display: none" id="edit-entity-form">
                         <div class="card-body">
                             <div class="row">
-                                <h5>Edit person</h5>
+                                <h5>Edit event_owner</h5>
                             </div>
                             <div class="row">
-                                <form method="post" name="editPersonForm">
+                                <form method="post" name="editEventOwnerForm">
                                     @csrf
                                     {{ method_field('PUT') }}
                                     <div class="row mb-3">
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">First Name</label>
-                                            <input type="text" name="edit_first_name" id="edit_first_name" class="form-control" placeholder="First Name" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">Last Name</label>
-                                            <input type="text" name="edit_last_name" id="edit_last_name" class="form-control" placeholder="Last Name" required>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label class="form-label fw-bolder">Email address</label>
-                                            <input type="email" name="edit_email" id="edit_email" class="form-control" placeholder="Email">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bolder">Name</label>
+                                            <input type="text" name="edit_event_manager_name" id="edit_event_manager_name" class="form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bolder">Email address</label>
+                                            <input type="email" name="edit_event_manager_email" id="edit_event_manager_email" class="form-control" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-12">
                                         <div class="col-md-6">
                                             <label class="form-label fw-bolder">Phone Number</label>
-                                            <input type="tel" name="edit_phone_number" id="edit_phone_number" class="form-control" placeholder="Phone Number">
+                                            <input type="tel" name="edit_event_manager_phone" id="edit_event_manager_phone" class="form-control" placeholder="Phone Number" required>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fw-bolder">Address</label>
-                                            <input type="text" name="edit_address" id="edit_address" class="form-control" placeholder="Address">
-                                        </div>
-                                    </div>                                   
+                                    </div>                                    
                                     <div class="row">
                                         <div class="col-md-12 d-flex justify-content-end">
                                             <button class="btn btn-lg" style="color: Tomato;" type="submit"><i class="fas fa-2x fa-save"></i></button>
@@ -116,21 +105,19 @@
                                     <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Email</th>
                                             <th>Phone Number</th>
-                                            <th>Address</th>
+                                            <th>Email</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        @foreach ($people as $person)
+                                    <tbody>		
+                                        @foreach ($event_owners as $event_owner)
                                             <tr>
-                                                <td>{{$person->first_name}}	{{$person->last_name}}</td>
-                                                <td>{{$person->email}}</td>
-                                                <td>{{$person->phone_number}}</td>
-                                                <td>{{$person->address}}</td>
+                                                <td>{{$event_owner->event_manager_name}}</td>
+                                                <td>{{$event_owner->event_manager_phone}}</td>
+                                                <td>{{$event_owner->event_manager_email}}</td>
                                                 <td>
-                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button" onclick="editPerson({{$person}})"><i class="fas fa-2x fa-pencil"></i></button>
+                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button" onclick="editEventOwner({{$event_owner}})"><i class="fas fa-2x fa-pencil"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach                            
@@ -148,15 +135,12 @@
 @endsection
 
 <script>
-    function editPerson(person) {
-        console.log(person['first_name'])
-        document.getElementById("edit_address").value  = person['address'];
-        document.getElementById("edit_email").value  = person['email'];
-        document.getElementById("edit_first_name").value  = person['first_name'];
-        document.getElementById("edit_last_name").value  = person['last_name'];
-        document.getElementById("edit_phone_number").value  = person['phone_number'];
+    function editEventOwner(event_owner) {
+        document.getElementById("edit_event_manager_name").value  = event_owner['event_manager_name'];
+        document.getElementById("edit_event_manager_phone").value  = event_owner['event_manager_phone'];
+        document.getElementById("edit_event_manager_email").value  = event_owner['event_manager_email'];
         document.getElementById("edit-entity-form").style.display = "block";
         document.getElementById("add-entity-form").style.display = "none";   
-        document.editPersonForm.action = "people/"+person['id'];     
+        document.editEventOwnerForm.action = "event-owners/"+event_owner['id'];     
     }
 </script>

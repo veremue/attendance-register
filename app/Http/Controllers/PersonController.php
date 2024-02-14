@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
-use Brian2694\Toastr\Toastr;
-use Illuminate\Database\Query\Processors\PostgresProcessor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
