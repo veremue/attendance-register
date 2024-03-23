@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-12">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <label class="form-label fw-bolder">Phone Number</label>
                                             <input type="tel" name="event_manager_phone" id="event_manager_phone" class="form-control" placeholder="Phone Number" required>
                                         </div>

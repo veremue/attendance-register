@@ -38,7 +38,7 @@
                                         <div class="col-md-4">
                                             <label class="form-label fw-bolder">Event Type</label>
                                             <select class="form-select" name="event_type" id="event_type" required>
-                                                <option selected value="">Select Event Owner</option>
+                                                <option selected value="">Select Event Type</option>
                                                 <option value="Prayer">Prayer</option>
                                                 <option value="Service">Service</option>
                                                 <option value="Meeting">Meeting</option>
@@ -100,9 +100,10 @@
                                             <th>Description</th>
                                             <th>Type</th>
                                             <th>Date</th>
+                                            <th>Manager</th>
                                             <th>Status</th>
                                             <th>Register Marked</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                         </tr>
                                     </thead>
@@ -113,10 +114,31 @@
                                                 <td>{{$events->event_description}}</td>
                                                 <td>{{$events->event_type}}</td>
                                                 <td>{{$events->event_next_date}}</td>
+                                                <td>{{$events->event_next_date}}</td>
                                                 <td>{{strtoupper($events->event_status)}}</td>
                                                 <td>{{$events->event_register_marked ? 'Yes' : 'No'}}</td>
-                                                <td>
-                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button"><i class="fas fa-2x fa-eye"></i></button>
+                                                <td class="text-center">
+                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                        <i class="fas fa-2x fa-pencil"></i>
+                                                    </button>
+                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                        <i class="fas fa-2x fa-people-group"></i>
+                                                    </button>
+                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                        <i class="fas fa-2x fa-circle-check"></i>
+                                                    </button>
+                                                    @if(strtoupper($events->event_status) == 'ACTIVE')
+                                                        <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                            <i class="fas fa-2x fa-lock"></i>
+                                                        </button>
+                                                    @else
+                                                        <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                            <i class="fas fa-2x fa-lock-open"></i>
+                                                        </button>
+                                                    @endif
+                                                    <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
+                                                        <i class="fas fa-2x fa-trash"></i>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @endforeach                            

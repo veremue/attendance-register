@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\EventOwner;
 use App\Models\Person;
+use App\Models\EventManager;
+use App\Models\EventRegister;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -33,16 +36,32 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        // "event_name" => "Ed"
-        // "event_type" => "Service"
-        // "event_next_date" => "2024-02-18"
-        // "event_description" => null
-        // "event_manager_name" => "2"
-        // "invitees" => array:2 [▼
-        // 0 => "2"
-        // 1 => "3"
-        //   ]
+        $user_id = Auth::user()->id;
+        $event = new Event();
+        $event->event_name = $request->event_name;
+        $event->event_type = $request->event_type;
+        $event->event_next_date = $request->event_next_date;
+        $event->event_description = $request->event_description;
+        $event->save();
+
+        $event_manager = new EventManager();
+        $event_manager->event_owner_id = $request->event_manager_name;
+        $event_manager->event_id = $event->id;
+        $event_manager->save();
+
+        if(!empty($request->invitees))
+        {
+            foreach($request->invitees as $invitee)
+            {
+                $event_register = new EventRegister();
+                $event_register->person_id = $invitee;
+                $event_register->event_id = $event->id;
+                $event_register->user_id = $user_id;
+                $event_register->save();
+            }
+        }
+
+        return back()->with('status','Event successfully saved!');
     }
 
     /**

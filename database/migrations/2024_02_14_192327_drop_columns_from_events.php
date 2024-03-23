@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('events', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
             $table->dropColumn('event_manager_name','event_manager_phone','event_manager_email','user_id');
         });
     }
