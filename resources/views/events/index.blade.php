@@ -54,7 +54,7 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <label class="form-label fw-bolder">Event Description</label>
-                                            <input type="email" name="event_description" id="event_description" class="form-control" placeholder="Description">
+                                            <input type="text" name="event_description" id="event_description" class="form-control" placeholder="Description">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label fw-bolder">Event Owner</label>
