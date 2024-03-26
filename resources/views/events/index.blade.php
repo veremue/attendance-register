@@ -108,16 +108,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>		                                        						
-                                        @foreach ($events as $events)
+                                        @foreach ($events as $event)
                                             <tr>
-                                                <td>{{$events->event_name}}</td>
-                                                <td>{{$events->event_description}}</td>
-                                                <td>{{$events->event_type}}</td>
-                                                <td>{{$events->event_next_date}}</td>
-                                                <td>{{$events->event_next_date}}</td>
-                                                <td>{{strtoupper($events->event_status)}}</td>
-                                                <td>{{$events->event_register_marked ? 'Yes' : 'No'}}</td>
+                                                <td>{{$event->event_name}}</td>
+                                                <td>{{$event->event_description}}</td>
+                                                <td>{{$event->event_type}}</td>
+                                                <td>{{$event->event_next_date}}</td>
+                                                <td>{{$event->event_next_date}}</td>
+                                                <td>{{strtoupper($event->event_status)}}</td>
+                                                <td>{{$event->event_register_marked ? 'Yes' : 'No'}}</td>
                                                 <td class="text-center">
+                                                    <a class="btn" href="{{url('events/'.$event->id)}}" style="font-size: 0.7em; color: Tomato;" role="button">
+                                                        <i class="fas fa-2x fa-eye"></i>
+                                                    </a>
                                                     <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
                                                         <i class="fas fa-2x fa-pencil"></i>
                                                     </button>
@@ -127,7 +130,7 @@
                                                     <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
                                                         <i class="fas fa-2x fa-circle-check"></i>
                                                     </button>
-                                                    @if(strtoupper($events->event_status) == 'ACTIVE')
+                                                    @if(strtoupper($event->event_status) == 'ACTIVE')
                                                         <button class="btn" style="font-size: 0.7em; color: Tomato;" type="button">
                                                             <i class="fas fa-2x fa-lock"></i>
                                                         </button>

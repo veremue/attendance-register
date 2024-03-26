@@ -69,7 +69,9 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $people = Person::orderBy('first_name')->get();
+        $event_owners = EventOwner::orderBy('event_manager_name')->get();
+        return view('events.show',['event'=>$event,'people'=>$people,'event_owners'=>$event_owners]);
     }
 
     /**
